@@ -121,9 +121,9 @@ struct Item item[ITEM_NUM+1];
 //描画関数
 void Draw()
 {
-	static int GrHandle = LoadGraph("./image/sora.jpg");//背景画像登録 640x480
-	static int PlayerHandle = LoadGraph("./image/bar.png");
-	static int ItemHandle = LoadGraph("./image/item.png");
+	static int GrHandle = LoadGraph("sora.jpg");//背景画像登録 640x480
+	static int PlayerHandle = LoadGraph("bar.png");
+	static int ItemHandle = LoadGraph("item.png");
 
 	static int color_R[13] = { 199,255,255,255,255,124,0  ,72 ,0  ,65 ,148,255,255 };
 	static int color_G[13] = { 21 ,20 ,127,160,255,252,250,209,191,105,0  ,20 ,165 };
@@ -229,7 +229,7 @@ void MoveBar()
 	static int time = 0;
 	static int Mouse = 0;
 
-	static int BallSound = LoadSoundMem("./music/ball.wav");
+	static int BallSound = LoadSoundMem("ball.wav");
 
 	if (item[5].time > 1000)
 	{
@@ -310,7 +310,7 @@ void MoveEnemy()
 void GameOver()
 {
 	int FontHandle = CreateFontToHandle(NULL, 40, 20);
-	static int GameOverSound = LoadSoundMem("./music/gameover.wav");
+	static int GameOverSound = LoadSoundMem("gameover.wav");
 	PlaySoundMem(GameOverSound, DX_PLAYTYPE_BACK);
 
 	for (int i = 0; i < 100; i++)
@@ -325,7 +325,7 @@ void GameOver()
 //アイテムの当たり判定
 void ItemHit()
 {
-	static int ItemSound = LoadSoundMem("./music/item.wav");
+	static int ItemSound = LoadSoundMem("item.wav");
 	for (int i = 1; i <= ITEM_NUM; i++)
 	{
 		if (item[i].exist == TRUE)
@@ -426,8 +426,8 @@ bool isDeleteBlock(int bx, int by)
 //アイテムによって出したボールの動き
 void MoveBall2()
 {
-	static int BounceSound = LoadSoundMem("./music/bounce.wav");
-	static int BlockSound = LoadSoundMem("./music/block.wav");
+	static int BounceSound = LoadSoundMem("bounce.wav");
+	static int BlockSound = LoadSoundMem("block.wav");
 
 	static int ballx1[BALL_NUM];
 	static int ballx2[BALL_NUM];
@@ -522,8 +522,8 @@ void MoveBall()
 	int bally1 = ball_y - BALL_SIZE;//ballの上端
 	int bally2 = ball_y + BALL_SIZE;//ballの下端
 	
-	static int BounceSound = LoadSoundMem("./music/bounce.wav");
-	static int BlockSound = LoadSoundMem("./music/block.wav");
+	static int BounceSound = LoadSoundMem("bounce.wav");
+	static int BlockSound = LoadSoundMem("block.wav");
 
 
 	//反射を考える
@@ -589,7 +589,7 @@ void MoveBall()
 //ゲームクリア
 void GameClear()
 {
-	static int GameClearSound = LoadSoundMem("./music/gameclear.wav");
+	static int GameClearSound = LoadSoundMem("gameclear.wav");
 	int FontHandle = CreateFontToHandle(NULL, 70, 20);
 
 
@@ -614,8 +614,8 @@ void GameClear()
 void GameContinue()
 {
 
-	static int ContinueSound = LoadSoundMem("./music/continue.wav");
-	static int GameOverSound = LoadSoundMem("./music/gameover.wav");
+	static int ContinueSound = LoadSoundMem("continue.wav");
+	static int GameOverSound = LoadSoundMem("gameover.wav");
 
 	int FontHandle = CreateFontToHandle(NULL, 40, 20);
 
@@ -731,7 +731,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
 	// タイトルを 変更
-	SetMainWindowText("ブロック崩し");
+	SetMainWindowText("ブロック崩し見本 by J1613 神田凌");
 	// ウインドウモードに変更
 	ChangeWindowMode(TRUE);
 
@@ -745,7 +745,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 
 
-	static int BGMHandle = LoadSoundMem("./music/sound.wav");
+	static int BGMHandle = LoadSoundMem("sound.wav");
 
 	//SetMouseDispFlag(FALSE);
 	Draw();
