@@ -1,6 +1,33 @@
+/*******************************************************************
+
+	ƒuƒƒbƒN•ö‚µ ‰Û‘è@@@block3.cpp
+	j1613 _“c@—½
+
+	•ÏX“_@
+	EƒuƒƒbƒN‚Ì”z’u‚ÆƒuƒƒbƒN‚ÌF‚Ì•ÏX
+	Eƒo[‚ğƒ}ƒEƒX‚Å“®‚©‚¹‚é‚æ‚¤‚É•ÏX
+	EƒQ[ƒ€ƒXƒ^[ƒg‰æ–ÊAƒQ[ƒ€ƒI[ƒo[‰æ–Ê‚Ì’Ç‰Á
+	EƒAƒCƒeƒ€‚Ì’Ç‰Á
+	
+	ƒAƒs[ƒ‹ƒ|ƒCƒ“ƒg
+	EƒuƒƒbƒN•ö‚µ‚ª–Ê”’‚­‚È‚é‚æ‚¤‚É8í—Ş‚ÌƒAƒCƒeƒ€‚ğ’Ç‰Á‚µ‚½B
+@@@ƒuƒƒbƒN‚ğ‰ó‚µ‚½‚Æ‚«‚É‚½‚Ü‚ÉƒAƒCƒeƒ€‚ªo‚é‚æ‚¤‚É‚µ‚½B
+   @@
+	 ƒAƒCƒeƒ€‚Ìí—Ş‚ğˆÈ‰º‚É¦‚·B
+	 1.ƒ{[ƒ‹‚ğ2ŒÂ’Ç‰Á‚ÅŒ‚‚Ä‚é
+	 2.ƒo[‚ªk‚Ş
+	 3.ƒ{[ƒ‹‚ª‘å‚«‚­‚È‚é
+	 4.ƒ{[ƒ‹‚ªƒuƒƒbƒN‚ğŠÑ’Ê‚·‚é
+	 5.ƒ{[ƒ‹‚ÌyÀ•W‚ªƒ}ƒEƒX‚ÌyÀ•W‚É‚È‚é
+	 6.ƒ{[ƒ‹‚ª­‚µ‘¬‚­‚È‚é
+	 7.ƒo[‚ªL‚Ñ‚é
+	 8.ƒ{[ƒ‹‚ğˆê‰ñ–h‚¢‚Å‚­‚ê‚éƒo[‚ªo‚é
+
+*******************************************************************/
+
 #include "DxLib.h"
 
-// ï¿½è” const ï¿½ï¿½tï¿½ï¿½ï¿½ï¿½Æ’è” 
+// ’è” const ‚ğ•t‚¯‚é‚Æ’è” 
 const int WINDOW_SIZE_X = 640;
 const int WINDOW_SIZE_Y = 480;
 int BAR_SIZE_X = 250;
@@ -31,11 +58,11 @@ int game_continue = 0;
 
 bool underbar = TRUE;
 
-// ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½
-int bar_y = WINDOW_SIZE_Y * 9 / 10;//barï¿½ï¿½[ï¿½ï¿½yï¿½ï¿½ï¿½W
-int bar_x = WINDOW_SIZE_X / 2 - BAR_SIZE_X / 2;//barï¿½ï¿½ï¿½[ï¿½ï¿½xï¿½ï¿½ï¿½W
-int ball_x = bar_x + BAR_SIZE_X / 2;//ballï¿½ï¿½ï¿½Sï¿½ï¿½xï¿½ï¿½ï¿½W
-int ball_y = bar_y - (BALL_SIZE/2);//ballï¿½ï¿½ï¿½Sï¿½ï¿½yï¿½ï¿½ï¿½W
+// ƒOƒ[ƒoƒ‹•Ï”
+int bar_y = WINDOW_SIZE_Y * 9 / 10;//barã’[‚ÌyÀ•W
+int bar_x = WINDOW_SIZE_X / 2 - BAR_SIZE_X / 2;//bar¶’[‚ÌxÀ•W
+int ball_x = bar_x + BAR_SIZE_X / 2;//ball’†S‚ÌxÀ•W
+int ball_y = bar_y - (BALL_SIZE/2);//ball’†S‚ÌyÀ•W
 int UNDERBAR_Y = bar_y+10;//WINDOW_SIZE_Y-10;
 int block[BLOCK_NUM_Y][BLOCK_NUM_X] =
 {
@@ -91,10 +118,10 @@ struct Ball ball[BALL_NUM];
 struct Item item[ITEM_NUM+1];
 
 
-//ï¿½`ï¿½ï¿½Öï¿½
+//•`‰æŠÖ”
 void Draw()
 {
-	static int GrHandle = LoadGraph("sora.jpg");//ï¿½wï¿½iï¿½æ‘œï¿½oï¿½^ 640x480
+	static int GrHandle = LoadGraph("sora.jpg");//”wŒi‰æ‘œ“o˜^ 640x480
 	static int PlayerHandle = LoadGraph("bar.png");
 	static int ItemHandle = LoadGraph("item.png");
 
@@ -136,27 +163,27 @@ void Draw()
 	}
 
 
-	DrawExtendGraph(0, 0,WINDOW_SIZE_X,WINDOW_SIZE_Y, GrHandle, FALSE);//ï¿½wï¿½iï¿½ï¿½`ï¿½ï¿½
+	DrawExtendGraph(0, 0,WINDOW_SIZE_X,WINDOW_SIZE_Y, GrHandle, FALSE);//”wŒi‚ğ•`‚­
 	if (underbar == TRUE)
 		DrawBox(0, UNDERBAR_Y, WINDOW_SIZE_X, UNDERBAR_Y + 3, GetColor(24, 166, 205), TRUE);
 	DrawExtendGraph(bar_x, bar_y,bar_x+BAR_SIZE_X,bar_y+BAR_SIZE_Y,PlayerHandle, TRUE);
 
 	if (item[4].time > 2000)
 	{
-		DrawCircle(ball_x, ball_y, BALL_SIZE, GetColor(205,173,0), TRUE);//BALLï¿½ï¿½`ï¿½ï¿½
-		DrawCircle(ball_x, ball_y, BALL_SIZE-2, GetColor(255, 255,0), TRUE);//BALLï¿½ï¿½`ï¿½ï¿½
+		DrawCircle(ball_x, ball_y, BALL_SIZE, GetColor(205,173,0), TRUE);//BALL‚ğ•`‚­
+		DrawCircle(ball_x, ball_y, BALL_SIZE-2, GetColor(255, 255,0), TRUE);//BALL‚ğ•`‚­
 	}
 	else
 	{
-		DrawCircle(ball_x, ball_y, BALL_SIZE, GetColor(0,139,0), TRUE);//BALLï¿½ï¿½`ï¿½ï¿½
-		DrawCircle(ball_x, ball_y, BALL_SIZE-2, GetColor(0,205,0), TRUE);//BALLï¿½ï¿½`ï¿½ï¿½
+		DrawCircle(ball_x, ball_y, BALL_SIZE, GetColor(0,139,0), TRUE);//BALL‚ğ•`‚­
+		DrawCircle(ball_x, ball_y, BALL_SIZE-2, GetColor(0,205,0), TRUE);//BALL‚ğ•`‚­
 	}
 
 	for (int i = 0; i < BALL_NUM; i++)
 	{
 		if (ball[i].exist == TRUE)
 		{
-			DrawCircle(ball[i].bx, ball[i].by, ORIGINAL_BALL_SIZE, GetColor(255,255,255), TRUE);//BALLï¿½ï¿½`ï¿½ï¿½
+			DrawCircle(ball[i].bx, ball[i].by, ORIGINAL_BALL_SIZE, GetColor(255,255,255), TRUE);//BALL‚ğ•`‚­
 		}
 	}
 
@@ -168,10 +195,10 @@ void Draw()
 			{
 				DrawBox(x * BLOCK_SIZE_X+1,BLOCK_TOP_Y+y*BLOCK_SIZE_Y+1,(x+1)*BLOCK_SIZE_X-1, BLOCK_TOP_Y + (y+1) * BLOCK_SIZE_Y-1,GetColor(color_R[y],color_G[y],color_B[y]), TRUE);
 
-				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, GetColor(255, 255, 255), TRUE);//boxï¿½Ìã‘¤
-				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, x*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(255 , 255, 255), TRUE);//boxï¿½Ìï¿½ï¿½ï¿½
-				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(0, 0, 0), TRUE);//boxï¿½Ì‰ï¿½ï¿½ï¿½
-				DrawLine((x + 1) * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(0, 0, 0), TRUE);//boxï¿½Ì‰Eï¿½ï¿½
+				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, GetColor(255, 255, 255), TRUE);//box‚Ìã‘¤
+				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, x*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(255 , 255, 255), TRUE);//box‚Ì¶‘¤
+				DrawLine(x * BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(0, 0, 0), TRUE);//box‚Ì‰º‘¤
+				DrawLine((x + 1) * BLOCK_SIZE_X, BLOCK_TOP_Y + y * BLOCK_SIZE_Y, (x + 1)*BLOCK_SIZE_X, BLOCK_TOP_Y + (y + 1) * BLOCK_SIZE_Y, GetColor(0, 0, 0), TRUE);//box‚Ì‰E‘¤
 			}
 		}
 	}
@@ -192,7 +219,7 @@ void Draw()
 
 }
 
-//Barï¿½Ìï¿½ï¿½Wï¿½ï¿½Ï‚ï¿½ï¿½ï¿½Öï¿½
+//Bar‚ÌÀ•W‚ğ•Ï‚¦‚éŠÖ”
 void MoveBar()
 {
 	GetMousePoint(&Mouse_X, &Mouse_Y);
@@ -235,7 +262,7 @@ void MoveBar()
 
 }
 
-//Blockï¿½Ì‰ï¿½ï¿½Ú“ï¿½
+//Block‚Ì‰¡ˆÚ“®
 void MoveEnemy()
 {
 	static int time = 0;
@@ -279,7 +306,7 @@ void MoveEnemy()
 
 }
 
-//ï¿½Qï¿½[ï¿½ï¿½ï¿½Iï¿½[ï¿½oï¿½[
+//ƒQ[ƒ€ƒI[ƒo[
 void GameOver()
 {
 	int FontHandle = CreateFontToHandle(NULL, 40, 20);
@@ -295,7 +322,7 @@ void GameOver()
 	DeleteFontToHandle(FontHandle);
 }
 
-//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
+//ƒAƒCƒeƒ€‚Ì“–‚½‚è”»’è
 void ItemHit()
 {
 	static int ItemSound = LoadSoundMem("item.wav");
@@ -331,7 +358,7 @@ void ItemHit()
 
 }
 
-//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½ÌŒï¿½ï¿½Êï¿½ï¿½ï¿½
+//ƒAƒCƒeƒ€‚ÌŒø‰ÊŠÔ
 void ItemTime()
 {
 	for (int i = 1; i <= ITEM_NUM; i++)
@@ -367,7 +394,7 @@ int getBlockNumY(int by)
 		return -1;
 }
 
-//blockï¿½Ì“ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½
+//block‚Ì“–‚½‚è”»’è
 bool isDeleteBlock(int bx, int by)
 {
 	int block_num_x = getBlockNumX(bx);
@@ -396,7 +423,7 @@ bool isDeleteBlock(int bx, int by)
 	return FALSE;
 }
 
-//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Äoï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½[ï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½
+//ƒAƒCƒeƒ€‚É‚æ‚Á‚Äo‚µ‚½ƒ{[ƒ‹‚Ì“®‚«
 void MoveBall2()
 {
 	static int BounceSound = LoadSoundMem("bounce.wav");
@@ -414,10 +441,10 @@ void MoveBall2()
 			if (ball[i].by > WINDOW_SIZE_Y)
 				ball[i].exist = FALSE;
 
-			ballx1[i] = ball[i].bx - BALL_SIZE;//ballï¿½Ìï¿½ï¿½[
-			ballx2[i] = ball[i].bx + BALL_SIZE;//ballï¿½Ì‰Eï¿½[
-			bally1[i] = ball[i].by - BALL_SIZE;//ballï¿½Ìï¿½[
-			bally2[i] = ball[i].by + BALL_SIZE;//ballï¿½Ì‰ï¿½ï¿½[
+			ballx1[i] = ball[i].bx - BALL_SIZE;//ball‚Ì¶’[
+			ballx2[i] = ball[i].bx + BALL_SIZE;//ball‚Ì‰E’[
+			bally1[i] = ball[i].by - BALL_SIZE;//ball‚Ìã’[
+			bally2[i] = ball[i].by + BALL_SIZE;//ball‚Ì‰º’[
 
 			if ((ballx1[i] < 0) || (ballx2[i] > WINDOW_SIZE_X))
 			{
@@ -466,7 +493,7 @@ void MoveBall2()
 
 }
 
-//ï¿½Aï¿½Cï¿½eï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½
+//ƒAƒCƒeƒ€‚Ì“®‚«
 void MoveItem()
 {
 	static int time = 0;
@@ -485,21 +512,21 @@ void MoveItem()
 
 }
 
-//ï¿½{ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½Wï¿½ï¿½Ï‚ï¿½ï¿½ï¿½Öï¿½ ï¿½ï¿½ï¿½Ë‚ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½
+//ƒ{[ƒ‹‚ÌÀ•W‚ğ•Ï‚¦‚éŠÖ” ”½Ë‚ğl‚¦‚é
 void MoveBall()
 {
-	static int vx = 1;//ballï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
-	static int vy = -1;//ballï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
-	int ballx1 = ball_x - BALL_SIZE;//ballï¿½Ìï¿½ï¿½[
-	int ballx2 = ball_x + BALL_SIZE;//ballï¿½Ì‰Eï¿½[
-	int bally1 = ball_y - BALL_SIZE;//ballï¿½Ìï¿½[
-	int bally2 = ball_y + BALL_SIZE;//ballï¿½Ì‰ï¿½ï¿½[
+	static int vx = 1;//ball‚Ìx•ûŒü‘¬“x
+	static int vy = -1;//ball‚Ìy•ûŒü‘¬“x
+	int ballx1 = ball_x - BALL_SIZE;//ball‚Ì¶’[
+	int ballx2 = ball_x + BALL_SIZE;//ball‚Ì‰E’[
+	int bally1 = ball_y - BALL_SIZE;//ball‚Ìã’[
+	int bally2 = ball_y + BALL_SIZE;//ball‚Ì‰º’[
 	
 	static int BounceSound = LoadSoundMem("bounce.wav");
 	static int BlockSound = LoadSoundMem("block.wav");
 
 
-	//ï¿½ï¿½ï¿½Ë‚ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½
+	//”½Ë‚ğl‚¦‚é
 	if ((ballx1 <= 0) || (ballx2 > WINDOW_SIZE_X))
 	{
 		vx *= -1;
@@ -559,7 +586,7 @@ void MoveBall()
 
 }
 
-//ï¿½Qï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½A
+//ƒQ[ƒ€ƒNƒŠƒA
 void GameClear()
 {
 	static int GameClearSound = LoadSoundMem("gameclear.wav");
@@ -583,7 +610,7 @@ void GameClear()
 	DeleteFontToHandle(FontHandle);
 }
 
-//ï¿½Rï¿½ï¿½ï¿½eï¿½Bï¿½jï¿½ï¿½ï¿½ï¿½ï¿½
+//ƒRƒ“ƒeƒBƒjƒ…‰æ–Ê
 void GameContinue()
 {
 
@@ -632,12 +659,12 @@ void GameContinue()
 void Init()
 {
 	ball_x = bar_x + (BAR_SIZE_X / 2);
-	ball_y = bar_y - (BALL_SIZE / 2);//ballï¿½ï¿½ï¿½Sï¿½ï¿½yï¿½ï¿½ï¿½W
+	ball_y = bar_y - (BALL_SIZE / 2);//ball’†S‚ÌyÀ•W
 
-	int bar_y = WINDOW_SIZE_Y * 9 / 10;//barï¿½ï¿½[ï¿½ï¿½yï¿½ï¿½ï¿½W
-	int bar_x = WINDOW_SIZE_X / 2 - BAR_SIZE_X / 2;//barï¿½ï¿½ï¿½[ï¿½ï¿½xï¿½ï¿½ï¿½W
-	int ball_x = bar_x + BAR_SIZE_X / 2;//ballï¿½ï¿½ï¿½Sï¿½ï¿½xï¿½ï¿½ï¿½W
-	int ball_y = bar_y - (BALL_SIZE / 2);//ballï¿½ï¿½ï¿½Sï¿½ï¿½yï¿½ï¿½ï¿½W
+	int bar_y = WINDOW_SIZE_Y * 9 / 10;//barã’[‚ÌyÀ•W
+	int bar_x = WINDOW_SIZE_X / 2 - BAR_SIZE_X / 2;//bar¶’[‚ÌxÀ•W
+	int ball_x = bar_x + BAR_SIZE_X / 2;//ball’†S‚ÌxÀ•W
+	int ball_y = bar_y - (BALL_SIZE / 2);//ball’†S‚ÌyÀ•W
 
 	for (int y = 0; y < BLOCK_NUM_Y; y++)
 	{
@@ -668,7 +695,7 @@ void Init()
 	underbar = TRUE;
 }
 
-//ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½ğ”‚ï¿½ï¿½ï¿½
+//c‚Á‚Ä‚¢‚éƒuƒƒbƒN‚ğ”‚¦‚é
 int BlockNum()
 {
 	int count = 0;
@@ -684,7 +711,7 @@ int BlockNum()
 	return count;
 }
 
-//ï¿½Qï¿½[ï¿½ï¿½ï¿½Jï¿½nï¿½Oï¿½Ì•`ï¿½ï¿½
+//ƒQ[ƒ€ŠJn‘O‚Ì•`‰æ
 void InitDraw()
 {
 	int FontHandle = CreateFontToHandle(NULL, 40, 20);
@@ -699,21 +726,21 @@ void InitDraw()
 	DeleteFontToHandle(FontHandle);
 }
 
-// WinMainï¿½Öï¿½
+// WinMainŠÖ”
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
-	// ï¿½^ï¿½Cï¿½gï¿½ï¿½ï¿½ï¿½ ï¿½ÏX
-	SetMainWindowText("ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ by J1613 ï¿½_ï¿½cï¿½ï¿½");
-	// ï¿½Eï¿½Cï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½ï¿½[ï¿½hï¿½É•ÏX
+	// ƒ^ƒCƒgƒ‹‚ğ •ÏX
+	SetMainWindowText("ƒuƒƒbƒN•ö‚µŒ©–{ by J1613 _“c—½");
+	// ƒEƒCƒ“ƒhƒEƒ‚[ƒh‚É•ÏX
 	ChangeWindowMode(TRUE);
 
 	SetGraphMode(WINDOW_SIZE_X,WINDOW_SIZE_Y, 32);
 
-	// ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	if (DxLib_Init() == -1)		// ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		return -1;			// ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ç’¼ï¿½ï¿½ï¿½ÉIï¿½ï¿½
-	// ï¿½}ï¿½Eï¿½Xï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½Ô‚É‚ï¿½ï¿½ï¿½
+	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+	if (DxLib_Init() == -1)		// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
+		return -1;			// ƒGƒ‰[‚ª‹N‚«‚½‚ç’¼‚¿‚ÉI—¹
+	// ƒ}ƒEƒX‚ğ•\¦ó‘Ô‚É‚·‚é
 	SetMouseDispFlag(TRUE);
 
 
@@ -726,7 +753,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	while (game_continue == 0)
 	{
 		PlaySoundMem(BGMHandle, DX_PLAYTYPE_LOOP);
-		// ï¿½Xï¿½yï¿½[ï¿½Xï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚Å‘Ò‹@
+		// ƒXƒy[ƒXƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚é‚Ü‚Å‘Ò‹@
 		while (!GetMouseInput())
 		{
 			Init();
@@ -734,22 +761,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			Draw();
 			InitDraw();
 			WaitTimer(3);
-			// ï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½[ï¿½vï¿½É‘ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ƒƒbƒZ[ƒWƒ‹[ƒv‚É‘ã‚í‚éˆ—‚ğ‚·‚é
 			if (ProcessMessage() == -1)
 			{
-				DxLib_End();				// ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ÌIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				return 0;				// ï¿½\ï¿½tï¿½gï¿½ÌIï¿½ï¿½ 
+				DxLib_End();				// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠg—p‚ÌI—¹ˆ—
+				return 0;				// ƒ\ƒtƒg‚ÌI—¹ 
 			}
 		}
 
-		// ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½v
+		// ƒQ[ƒ€ƒƒCƒ“ƒ‹[ƒv
 		while (1)
 		{
-			// ï¿½ï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½[ï¿½vï¿½É‘ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// ƒƒbƒZ[ƒWƒ‹[ƒv‚É‘ã‚í‚éˆ—‚ğ‚·‚é
 			if (ProcessMessage() == -1)
 			{
-				DxLib_End();				// ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ÌIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-				return 0;				// ï¿½\ï¿½tï¿½gï¿½ÌIï¿½ï¿½ 
+				DxLib_End();				// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠg—p‚ÌI—¹ˆ—
+				return 0;				// ƒ\ƒtƒg‚ÌI—¹ 
 			}
 			MoveEnemy();
 			MoveBar();
@@ -794,6 +821,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WaitTimer(1000);
 		
 	}
-	DxLib_End();				// ï¿½cï¿½wï¿½ï¿½ï¿½Cï¿½uï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ÌIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	return 0;				// ï¿½\ï¿½tï¿½gï¿½ÌIï¿½ï¿½ 
+	DxLib_End();				// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠg—p‚ÌI—¹ˆ—
+	return 0;				// ƒ\ƒtƒg‚ÌI—¹ 
 }
